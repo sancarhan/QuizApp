@@ -36,7 +36,7 @@
 
 <div class="soru" style="text-align: center; margin-top: 50px; ">
     <h2>Final Sınav Sonucu</h2>
-    <p>İsim Soyisim: {{ quiz_result.username }}</p>
+    <p>İsim Soyisim: {{ user.get_full_name }}</p>
     <p>Puan: {{ quiz_result.score }}</p>
     <p>Doğru Sorular: {{ quiz_result.correct_questions }}</p>
     <p>Yanlış Sorular: {{ quiz_result.incorrect_questions.count }}</p>

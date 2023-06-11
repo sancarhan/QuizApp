@@ -1,6 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block css %}
+    <style>
+        body{
+            overflow: hidden;
+        }
+    </style>
+{% endblock css %}
+    
 {% block body %}
 {% include 'part/header.html' %}
 
@@ -42,7 +50,7 @@
                         {% csrf_token %}
                           <div class="clearfix">
                              
-                              <input class="col2 first"  name="name"  type="text" placeholder="Adınız" required>
+                              <input class="col2 first"  name="name"  type="text" placeholder="Adınız ve Soyadınız" required>
                       
                              
                           </div>

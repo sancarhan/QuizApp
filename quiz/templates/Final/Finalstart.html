@@ -42,8 +42,8 @@
 <div class="soru" style="text-align: center; margin-top: 50px;">
   <form method="POST" action="{% url 'start_quiz' %}">
       {% csrf_token %}
-      <label for="username" style="margin-top: 15px;">İsminiz Ve Soyisminiz:</label>
-      <input type="text" name="username" required>
+      <label for="username" style="margin-top: 15px;">İsminiz Ve Soyisminiz: </label>
+      <input type="text" name="username" value="{{ user.get_full_name }}" required> 
       <br><br>
       <button type="submit" class="btn">Final Sınavına Başla</button>
 

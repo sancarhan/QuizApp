@@ -4,7 +4,13 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from .models import *
 
+def handleQuizPoint(request, title, quizSonuc):
+       # yeteneği oluştur   
+       UserInfoStatus.objects.update_or_create(user=request.user, title=title, statu=quizSonuc)
 
+       user = UserInfo.objects.filter(user=request.user).first()
+       yetenek = UserInfoStatus.objects.filter(user=request.user).last()
+       user.status.add(yetenek)
 # Create your views here.
 def index (request):     
    
@@ -170,7 +176,10 @@ def htmlq(request):
         success_percentage = "{:.2f}".format((score / (total_htmlq * 10)) * 100)
         error_percentage = "{:.2f}".format((error_count / total_htmlq) * 100)
         blank_percentage = "{:.2f}".format((blank_count / total_htmlq) * 100)
-
+         
+        quizSonuc = (score / (  total_htmlq * 10)) * 100
+        # yetenek oluştur
+        handleQuizPoint(request, 'Html', quizSonuc)
         return render(request, 'sınav/htmlresult.html', {
             'score': score,
             'error_count': error_count,
@@ -215,6 +224,9 @@ def cssq(request):
         success_percentage = "{:.2f}".format((score / (total_cssq * 10)) * 100)
         error_percentage = "{:.2f}".format((error_count / total_cssq) * 100)
         blank_percentage = "{:.2f}".format((blank_count / total_cssq) * 100)
+        quizSonuc = (score / (  total_cssq * 10)) * 100
+        # yetenek oluştur
+        handleQuizPoint(request, 'Css', quizSonuc)
 
         return render(request, 'sınav/cssresult.html', {
             'score': score,
@@ -261,6 +273,10 @@ def bootstrapq(request):
         error_percentage = "{:.2f}".format((error_count / total_bootstrapq) * 100)
         blank_percentage = "{:.2f}".format((blank_count / total_bootstrapq) * 100)
 
+        quizSonuc = (score / (  total_bootstrapq * 10)) * 100
+        # yetenek oluştur
+        handleQuizPoint(request, 'Bootstrap', quizSonuc)
+
         return render(request, 'sınav/bootstrapresult.html', {
             'score': score,
             'error_count': error_count,
@@ -305,6 +321,10 @@ def javaq(request):
         success_percentage = "{:.2f}".format((score / (total_javaq * 10)) * 100)
         error_percentage = "{:.2f}".format((error_count / total_javaq) * 100)
         blank_percentage = "{:.2f}".format((blank_count / total_javaq) * 100)
+
+        quizSonuc = (score / (  total_javaq * 10)) * 100
+        # yetenek oluştur
+        handleQuizPoint(request, 'Java', quizSonuc)
 
         return render(request, 'sınav/jsresult.html', {
             'score': score,
@@ -351,6 +371,10 @@ def pythonq(request):
         error_percentage = "{:.2f}".format((error_count /  total_pythonq) * 100)
         blank_percentage = "{:.2f}".format((blank_count /  total_pythonq) * 100)
 
+        quizSonuc = (score / (  total_pythonq * 10)) * 100
+        # yetenek oluştur
+        handleQuizPoint(request, 'Python', quizSonuc)
+
         return render(request, 'sınav/pythonresult.html', {
             'score': score,
             'error_count': error_count,
@@ -395,6 +419,10 @@ def djangoq(request):
         success_percentage = "{:.2f}".format((score / (  total_djangoq * 10)) * 100)
         error_percentage = "{:.2f}".format((error_count /   total_djangoq) * 100)
         blank_percentage = "{:.2f}".format((blank_count /   total_djangoq) * 100)
+
+        quizSonuc = (score / (  total_djangoq * 10)) * 100
+        # yetenek oluştur
+        handleQuizPoint(request, 'Django', quizSonuc)
 
         return render(request, 'sınav/djangoresult.html', {
             'score': score,
@@ -441,6 +469,10 @@ def cşarpq(request):
         error_percentage = "{:.2f}".format((error_count /   total_cşarpq) * 100)
         blank_percentage = "{:.2f}".format((blank_count /   total_cşarpq) * 100)
 
+        quizSonuc = (score / (  total_cşarpq * 10)) * 100
+        # yetenek oluştur
+        handleQuizPoint(request, 'C#', quizSonuc)
+
         return render(request, 'sınav/c#result.html', {
             'score': score,
             'error_count': error_count,
@@ -486,6 +518,10 @@ def cplusq(request):
         success_percentage = "{:.2f}".format((score / (  total_cplusq * 10)) * 100)
         error_percentage = "{:.2f}".format((error_count /   total_cplusq) * 100)
         blank_percentage = "{:.2f}".format((blank_count /   total_cplusq) * 100)
+
+        quizSonuc = (score / (  total_cplusq * 10)) * 100
+        # yetenek oluştur
+        handleQuizPoint(request, 'C++', quizSonuc)
 
         return render(request, 'sınav/c++result.html', {
             'score': score,
@@ -657,7 +693,10 @@ def deleteStatu(request,sid):
 
 #USER Alanı
 def loginUser(request):
+    if request.user.is_authenticated:
+        return redirect('anasayfa')
     
+
     if request.method == "POST":
         username = request.POST.get("username")
         password = request.POST.get("password")
@@ -740,9 +779,14 @@ def RegisterUser (request):
     return render(request,'kayıtol.html')
 
 def logoutUser(request):
-    logout(request)
-    return redirect('loginUser')
 
+    if request.user.is_authenticated:
+        logout(request)
+        return redirect('loginUser')
+    
+    # kullanıcı giriş yapmamışstır
+    else:
+        return redirect('loginUser')
 
 def main (request):
     if request.method == "POST":

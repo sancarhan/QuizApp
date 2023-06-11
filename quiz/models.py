@@ -279,6 +279,12 @@ class UserInfo(models.Model):
 
     def __str__(self):
         return self.user.username
+    
+    def handleImage(self):
+          if self.image:
+                return self.image.url
+          else:
+                return "/static/img/x.ico"
 
 class Contact(models.Model):
     name = models.CharField(("İsim"), max_length=50)

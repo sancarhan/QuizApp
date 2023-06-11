@@ -14,15 +14,15 @@
               <div style="height: 500px;" class="card mb-4">
                   <div  class="card-body text-center">
                       
-                      {% if userinfo.image %}
-                      <img  style="text-align: center; background-color: black; "  src="{{ userinfo.image.url }}" 
+          
+                      <img  style="text-align: center; "  src="{{ userinfo.handleImage }}" 
                           alt="avatar" class=" img-fluid" style="width: 150px; height: 150px; object-fit: cover;">
                           
-                      {% else %}
-                          
+                            
                         
                               
-                      {% endif %}
+                    
+                   
                           
                       <h5 class="my-3" style="color: black;">Kullanıcı Adı: {{ user.username }}</h5>
                       <p class="text-muted mb-1"  style="color: black;">İş: {{ userinfo.job }}</p>
@@ -239,15 +239,15 @@
                       <div class="card mb-4 mb-md-0">
                           <div class="card-body"  style="color: black;">
                              
-                              <div class="btn btn-success w-100 statubtn">Yetenek Ekle</div>
-                              <form method="POST" class="p-4 pt-2 mb-3" id="statuform" style="box-shadow: inset 0px 0px 8px 4px #00000030;display: none;">
+                              <div class="btn btn-success w-100 statubtn">Yetenek Eklemek İçin Ders Sonu Quizlerini Çözünüz</div>
+                              <!-- <form method="POST" class="p-4 pt-2 mb-3" id="statuform" style="box-shadow: inset 0px 0px 8px 4px #00000030;display: none;">
                                   {% csrf_token %}
                                   <label for="title">Yetenek Adı</label>
                                   <input type="text" name="title" id="title" class="form-control">
                                   <label for="statu">Yetenek Değeri</label>
                                   <input type="number" name="statu" min="0" max="100" id="statu" class="form-control">
                                   <button class="btn btn-primary w-100 mt-2" name="formbutton" value="formStatu" type="submit">Ekle</button>
-                              </form>
+                              </form> -->
                               
                               <script>
                                   const statubtn = document.querySelector(".statubtn")
@@ -266,9 +266,9 @@
                                   <p class="mb-1" style="font-size: 1rem;">{{ i.title }}</p>
                                   
                                   <!-- Button trigger modal -->
-                                  <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#del{{ i.id }}">
+                                  <!-- <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#del{{ i.id }}">
                                       x
-                                  </button>
+                                  </button> -->
                                   
                                   <!-- Modal -->
                                   <div class="modal fade" id="del{{ i.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

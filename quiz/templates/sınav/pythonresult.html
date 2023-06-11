@@ -35,7 +35,7 @@
 {% block body %}
 
 
-
+<a class="nav-link text-dark main " href="{% url 'anasayfa' %}">Anasayfa</a>
 <div class="soru" style="text-align: center; margin-top: 50px;">
 
 
@@ -46,12 +46,13 @@
       <p>Başarı Yüzdesi: {{ success_percentage }}%</p>
       <p>Hata Yüzdesi: {{ error_percentage }}%</p>
       <p>Boş Bırakılan Yüzdesi: {{ blank_percentage }}%</p>
-  
+       <hr>
       {% if wrong_pythonq %}
       <h3>Yanlış Cevaplanan Sorular:</h3>
-      <ul>
+      <ul style="list-style: none; text-align: start; margin-left: -30px;">
           {% for wrong_pythonq in wrong_pythonq %}
               <li>
+                <hr>
                   Soru:<span style="text-transform: capitalize;"> {{ wrong_pythonq.question.question_text }}</span><br>
                    Cevap: <span  style="text-transform: capitalize;">{{ wrong_pythonq.question.get_correct_answer_display }}</span><br>
                   Senin Cevabın: <span  style="text-transform: capitalize;">{{ wrong_pythonq.selected_option }}</span>
@@ -62,6 +63,6 @@
 
 
 </div>
-<a class="nav-link text-dark main " href="{% url 'anasayfa' %}">Anasayfa</a>
+
 
 {% endblock body %}
