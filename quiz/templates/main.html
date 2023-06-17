@@ -2,11 +2,14 @@
 {% load static %}
 
 {% block css %}
-    <style>
-        body{
-            overflow: hidden;
-        }
-    </style>
+<link rel="stylesheet" href="../static/assets/css/all.min.css">
+<link rel="stylesheet" href="../static/assets/css/animate.css">
+<link rel="stylesheet" href="../static/assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="../static/assets/css/bootstrap.min.css.map">
+<link rel="stylesheet" href="../static/assets/css/fontawsom-all.min.css">
+<link rel="stylesheet" href="../static/assets/css/responsive.css">
+<link rel="stylesheet" href="../static/assets/css/style.css">
+<link rel="stylesheet" href="../static/assets/css/style.css.map">
 {% endblock css %}
     
 {% block body %}
@@ -32,10 +35,8 @@
      
      
           <section class="section2 clearfix">
-              <div class="col2 column1 first">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3012.086751818843!2d28.872698315413125!3d40.9795811793036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cabd361d9f2bcd%3A0x109cda61c48e4b76!2sNeos%20Yaz%C4%B1l%C4%B1m%20Akademi!5e0!3m2!1sen!2str!4v1686053932856!5m2!1sen!2str" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-              </div>
-              <div class="col2 column2 last">
+             
+              <div class="col12 column2 last">
                   <div class="sec2innercont">
                       <div class="sec2addr adres">
                           <p style="color: black;">Cevizlik, Hüsreviye Sk. No:12, 34142 Bakırköy/İstanbul</p>
@@ -72,7 +73,54 @@
       
       </div>
   </div>
+  <section class="mab-01">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6024.17352001393!2d28.874887!3d40.979581!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cabd361d9f2bcd%3A0x109cda61c48e4b76!2sNeos%20Yaz%C4%B1l%C4%B1m%20Akademi!5e0!3m2!1str!2str!4v1687010156897!5m2!1str!2str" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</section>
   </div>
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+          <div class="fotter-content">
+            <h2>Bize Ulaşın</h2>
+            <p>İstanbul/Bakırköy, Ankara/Kızılay, İzmir/Konak, Bursa/OsmanGazi ve Almanya/Stuttgart'da bulunan şubelerimize her zaman bekleriz. Öncesinde telefonla randevu alabilirsiniz.</p>
+          </div>
+        </div>
+  
+        <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+          <div class="fotter-content">
+            <h2>Şubelerimiz</h2>
+            <ul>
+              <li><a href="https://www.google.com/maps/place/Neos+Yazılım+Akademi/@40.9795812,28.874887,17z/data=!3m1!4b1!4m6!3m5!1s0x14cabd361d9f2bcd:0x109cda61c48e4b76!8m2!3d40.9795812!4d28.874887!16s%2Fg%2F11r75vhn15?entry=ttu"> İstanbul Merkez Şube
+                </a></li>
+              <li><a href="https://www.google.com/maps/place/Meşrutiyet,+Meşrutiyet+Cd.+No:18,+06420+Çankaya%2FAnkara/@39.9177908,32.8568395,21z/data=!4m5!3m4!1s0x14d34fabb0e8fcef:0x9eb91e7af4654030!8m2!3d39.9177798!4d32.856978?shorturl=1">Ankara Şube</a></li>
+              <li><a href="https://www.google.com/maps/place/İsmet+Kaptan,+Hürriyet+Blv.+No:11,+35210+Konak%2Fİzmir/@38.4256196,27.1393784,18.22z/data=!4m5!3m4!1s0x14bbd8f73155fa69:0xe17659b3555aad89!8m2!3d38.4255609!4d27.1401049?shorturl=1"> İzmir Şube</a></li>
+              <li><a href="https://www.google.com/maps/place/Berk+2+Plaza/@40.1896863,29.0591721,17z/data=!3m1!4b1!4m6!3m5!1s0x14ca3e09a5de3a4f:0x777aecd8a38c62dd!8m2!3d40.1896863!4d29.0613608!16s%2Fg%2F11g0yykq5g?coh=164777&entry=tt&shorturl=1">Bursa Şube</a></li>
+     
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+          <div class="fotter-content">
+            <h2>Site Haritası</h2>
+            <ul>
+              <li><a href="{% url 'ders' %}"> Dersler</a></li>
+              <li><a href="{% url 'main' %}">İletişim</a></li>
+              
+     
+            </ul>
+          </div>
+        </div>
+  
+        
+        <div class="col-12">
+          <div class="end-footer">
+            <p>Copyright ©2020 smarteyeapps. All Rights Reserved.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
 </div>
   {% endblock body %}
     

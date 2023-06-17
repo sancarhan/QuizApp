@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from .models import *
 
+
+
 def handleQuizPoint(request, title, quizSonuc):
        # yeteneği oluştur   
        UserInfoStatus.objects.update_or_create(user=request.user, title=title, statu=quizSonuc)

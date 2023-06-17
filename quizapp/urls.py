@@ -12,6 +12,7 @@ urlpatterns = [
     path('İletişim/',main, name="main" ),
     path('Dersler/',ders, name="ders" ),
     path('Anasayfa/',anasayfa, name="anasayfa" ),
+    
     # DERSLER
     path('Html/',html, name="html" ),
     path('Html/<int:pk>/', html_detail, name='html_detail'),
